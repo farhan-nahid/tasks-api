@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1737286682287,
+      "tag": "0000_spooky_marauders",
+      "breakpoints": true
+    }
+  ]
+}
