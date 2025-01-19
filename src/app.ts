@@ -1,12 +1,6 @@
-import { OpenAPIHono } from "@hono/zod-openapi";
 
-import { notFound, onError } from "./middlewares";
+import { createApp } from "./lib/create-app";
 
-const app = new OpenAPIHono();
-
-app.get("/", c => c.text("Hello Hono!"));
-
-app.notFound(notFound);
-app.onError(onError);
+const app = createApp();
 
 export { app };

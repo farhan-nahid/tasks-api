@@ -1,4 +1,3 @@
-/* eslint-disable node/no-process-env */
 import { config } from "dotenv";
 import { expand } from "dotenv-expand";
 import path from "node:path";
@@ -8,9 +7,10 @@ expand(
   config({
     path: path.resolve(
       process.cwd(),
-      process.env.NODE_ENV === "test" ? ".env.test" : ".env"
+      // eslint-disable-next-line node/no-process-env
+      process.env.NODE_ENV === "test" ? ".env.test" : ".env",
     ),
-  })
+  }),
 );
 
 const EnvSchema = z
@@ -43,7 +43,7 @@ const EnvSchema = z
 
 export type env = z.infer<typeof EnvSchema>;
 
-// eslint-disable-next-line ts/no-redeclare
+// eslint-disable-next-line node/no-process-env, ts/no-redeclare
 const { data: env, error } = EnvSchema.safeParse(process.env);
 
 if (error) {
