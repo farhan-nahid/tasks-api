@@ -3,8 +3,12 @@ import { OpenAPIHono } from "@hono/zod-openapi";
 
 import type { AppBuildings } from "./types";
 
-export function createApp() {
-  const app = new OpenAPIHono<AppBuildings>({ strict: false });
+function createRouter() {
+  return new OpenAPIHono<AppBuildings>({ strict: false });
+}
+
+function createApp() {
+  const app = createRouter();
   app.use(serveEmojiFavicon("📝"));
   app.use(pinoLogger());
 
@@ -13,3 +17,5 @@ export function createApp() {
 
   return app;
 }
+
+export { createApp, createRouter };

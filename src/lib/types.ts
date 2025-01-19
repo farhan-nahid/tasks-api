@@ -1,3 +1,4 @@
+import type { OpenAPIHono } from "@hono/zod-openapi";
 import type { PinoLogger } from "hono-pino";
 
 interface AppBuildings {
@@ -6,4 +7,6 @@ interface AppBuildings {
   };
 }
 
-export type { AppBuildings };
+type AppOpenAPI = OpenAPIHono<AppBuildings>;
+
+export type { AppBuildings, AppOpenAPI };
