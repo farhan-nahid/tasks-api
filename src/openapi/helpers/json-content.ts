@@ -1,8 +1,6 @@
 import type { ZodSchema } from "./types.ts";
 
-function jsonContent<
-  T extends ZodSchema,
->(schema: T, description: string) {
+function jsonContent<T extends ZodSchema>(schema: T, description: string) {
   return {
     content: {
       "application/json": {
