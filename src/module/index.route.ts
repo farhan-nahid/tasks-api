@@ -7,8 +7,11 @@ import { createMessageObjectSchema } from "@/openapi/schemas";
 
 const router = createRouter().openapi(
   createRoute({
+    tags: ["Health"],
     method: "get",
-    path: "/",
+    path: "/health",
+    summary: "Health check",
+    description: "Check if the server is running",
     responses: {
       [httpStatusCodes.OK]: jsonContent(
         createMessageObjectSchema("Task Api server is running"),
@@ -17,7 +20,7 @@ const router = createRouter().openapi(
     },
   }),
   (ctx) => {
-    return ctx.json({ message: "Hello World" }, httpStatusCodes.OK);
+    return ctx.json({ message: "Task Api server is running" }, httpStatusCodes.OK);
   },
 );
 

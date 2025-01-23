@@ -26,7 +26,7 @@ export const update: AppRouteHandler<UpdateRoute> = async (ctx) => {
   const [updatedTask] = await db
     .update(tasks)
     .set(task)
-    .where(eq(tasks.id, taskId)) // Add non-null assertion since task.id is required for update
+    .where(eq(tasks.id, taskId)) 
     .returning();
   return ctx.json(updatedTask);
 };
